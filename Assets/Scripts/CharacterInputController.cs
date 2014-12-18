@@ -35,12 +35,12 @@ public class CharacterInputController : MonoBehaviour {
       _velocity.y = 0;
     }
     
-    if(Input.GetKey(KeyCode.RightArrow)) {
+    if(Input.GetButton("Right")) {
       normalizedHorizontalSpeed = 1;
       if(transform.localScale.x < 0f) {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
       }
-    } else if (Input.GetKey(KeyCode.LeftArrow)) {
+    } else if (Input.GetButton("Left")) {
       normalizedHorizontalSpeed = -1;
       if (transform.localScale.x > 0f) {
         transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -51,7 +51,7 @@ public class CharacterInputController : MonoBehaviour {
     
     
     // we can only jump whilst grounded
-    if( _controller.isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+    if( _controller.isGrounded && Input.GetButtonDown("Jump"))
     {
       _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
     }
