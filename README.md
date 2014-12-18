@@ -7,6 +7,14 @@ Controls
 ---------
 It's a Unity game so you can configure it, but arrows or wasd to move, up to jump, and space/shift to shoot (not that shooting does anything yet).
 
+Todo
+-----
++ Add Start Scene
++ Add UI
++ Remove bullets on collision
++ Add enemies
++ Allow users to quit :P
+
 Misc
 -----
 Note that this repo does not include Toolkit 2d, but assumes that you do have
