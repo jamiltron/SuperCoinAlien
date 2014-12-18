@@ -5,8 +5,8 @@ using System.Collections;
 [RequireComponent(typeof(CharacterController2D))]
 public class CoinGrabber : MonoBehaviour {
 
-  public int coins = 0;
-  public event Action<Vector3> OnCoinGrabbedEvent;
+  public int coinsGrabbed = 0;
+  public event Action<GameObject> OnCoinGrabbedEvent;
   private CharacterController2D controller;
 
   void Awake() {
@@ -17,10 +17,9 @@ public class CoinGrabber : MonoBehaviour {
   void OnTriggerEnterEvent(Collider2D col) {
     if (col.gameObject.tag == "Coin") {
       if (OnCoinGrabbedEvent != null) {
-        OnCoinGrabbedEvent(col.gameObject.transform.position);
+        OnCoinGrabbedEvent(col.gameObject);
       }
-      coins += 1;
-      Destroy(col.gameObject);
+      coinsGrabbed += 1;
     }
   }
 

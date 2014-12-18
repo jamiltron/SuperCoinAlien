@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpawnCoin : MonoBehaviour {
 
@@ -8,13 +9,20 @@ public class SpawnCoin : MonoBehaviour {
   public GameObject[] spawnPoints;
   
 
+  private GameObject coin;
+
   void Awake() {
     if (coinGrabber != null) {
       coinGrabber.OnCoinGrabbedEvent += GenerateCoin;
     }
   }
 
-  public void GenerateCoin(Vector3 lastPosition) {
+  void Start() {
+    GenerateCoin((GameObject)Instantiate(coinPrefab, Vector3.zero, Quaternion.identity));
+  }
+
+  public void GenerateCoin(GameObject coin) {
+    Vector3 lastPosition = coin.transform.position;
     int i = Random.Range(0, spawnPoints.Length);
     Vector3 newPosition = spawnPoints[i].transform.position;
 
@@ -28,7 +36,7 @@ public class SpawnCoin : MonoBehaviour {
         Debug.LogError("Cannot find new position!");
       }
     }
-    Instantiate(coinPrefab, newPosition, Quaternion.identity);
+    coin.transform.position = newPosition;
   }
 
 }
