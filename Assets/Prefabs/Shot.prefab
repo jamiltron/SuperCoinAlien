@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3329472}
   - 23: {fileID: 2329472}
   - 114: {fileID: 11429474}
-  - 65: {fileID: 6529472}
   - 114: {fileID: 11429472}
+  - 58: {fileID: 5886074}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Untagged
@@ -59,18 +59,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129472}
   m_Mesh: {fileID: 0}
---- !u!65 &6529472
-BoxCollider:
+--- !u!58 &5886074
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129472}
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .110000014, y: .120000005, z: .200000003}
-  m_Center: {x: .00499999523, y: .00999999046, z: 0}
+  m_Radius: .5
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11429472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +100,7 @@ MonoBehaviour:
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
-  boxCollider: {fileID: 6529472}
+  boxCollider: {fileID: 0}
   meshCollider: {fileID: 0}
   meshColliderPositions: []
   meshColliderMesh: {fileID: 0}

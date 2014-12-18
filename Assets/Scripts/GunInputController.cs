@@ -11,7 +11,6 @@ public class GunInputController : MonoBehaviour {
 
   void Update() {
     if (currentCooldown <= 0f && Input.GetButton("Fire")) {
-      Debug.Log("fire!");
       currentCooldown = cooldown;
       GameObject newObject = (GameObject) Instantiate(bullet, gunTransform.position, Quaternion.identity);
       Bullet bulletComponent = newObject.GetComponent<Bullet>();
