@@ -5,15 +5,17 @@ A sample 2d Unity game used to show some Toolkit 2d functionality.
 
 Controls
 ---------
-It's a Unity game so you can configure it, but arrows or wasd to move, up to jump, and space/shift to shoot (not that shooting does anything yet).
+* Arrows to move.
+* Up arrow to jump.
+* Space or shift to shoot (doesn't do much right now).
+* Escape to quit.
 
 Todo
 -----
-+ Add Start Scene
-+ Add UI
-+ Remove bullets on collision
-+ Add enemies
-+ Allow users to quit :P
+* Add Start Scene
+* Add UI
+* Remove bullets on collision
+* Add enemies
 
 Misc
 -----
