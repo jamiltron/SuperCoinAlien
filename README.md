@@ -12,7 +12,6 @@ Controls
 
 Todo
 -----
-* Add Start Scene
 * Add UI
 * Remove bullets on collision
 * Add enemies
