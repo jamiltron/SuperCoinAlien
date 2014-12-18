@@ -1,4 +1,6 @@
-﻿#define DEBUG_CC2D_RAYS
+﻿// see https://github.com/prime31/CharacterController2D for more info,
+// including license
+#define DEBUG_CC2D_RAYS
 using UnityEngine;
 using System;
 using System.Collections.Generic;
