@@ -15,6 +15,7 @@ public class CoinGrabber : MonoBehaviour {
   }
 
   void OnTriggerEnterEvent(Collider2D col) {
+    Debug.Log("TRIGGERED!");
     if (col.gameObject.tag == "Coin") {
       if (OnCoinGrabbedEvent != null) {
         OnCoinGrabbedEvent(col.gameObject);

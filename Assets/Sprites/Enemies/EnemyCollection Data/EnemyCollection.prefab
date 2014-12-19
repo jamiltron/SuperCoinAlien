@@ -1,0 +1,430 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &111144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411144}
+  - 114: {fileID: 11411144}
+  m_Layer: 0
+  m_Name: EnemyCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411144
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11411144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: slimeWalk2
+    boundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: .50999999, y: .25999999, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: .50999999, y: .25999999, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.25, y: -.129999995, z: 0}
+    - {x: .25999999, y: -.129999995, z: 0}
+    - {x: -.25, y: .129999995, z: 0}
+    - {x: .25999999, y: .129999995, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .0156328119, y: .710945308}
+    - {x: .414054692, y: .710945308}
+    - {x: .0156328119, y: .914054692}
+    - {x: .414054692, y: .914054692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: 497ee9186e9de43c4aa9b8a170b1a729
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 2
+    customColliders: []
+    colliderVertices:
+    - {x: -.0350000039, y: -.00999999791, z: 0}
+    - {x: .194999993, y: .119999997, z: .100000001}
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: snailWalk1
+    boundsData:
+    - {x: 0, y: -.00499999523, z: 0}
+    - {x: .539999962, y: .310000002, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: -.00499999523, z: 0}
+    - {x: .539999962, y: .310000002, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.269999981, y: -.159999996, z: 0}
+    - {x: .269999981, y: -.159999996, z: 0}
+    - {x: -.269999981, y: .150000006, z: 0}
+    - {x: .269999981, y: .150000006, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .492195308, y: .0156328119}
+    - {x: .914054692, y: .0156328119}
+    - {x: .492195308, y: .257804692}
+    - {x: .914054692, y: .257804692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4b2468dae804948828c233227c825ea9
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 3
+    customColliders: []
+    colliderVertices:
+    - {x: .0649999976, y: .145000011, z: -.100000001}
+    - {x: .0649999976, y: .145000011, z: .100000001}
+    - {x: -.269999981, y: .0799999982, z: -.100000001}
+    - {x: -.269999981, y: .0799999982, z: .100000001}
+    - {x: -.234999985, y: -.159999996, z: -.100000001}
+    - {x: -.234999985, y: -.159999996, z: .100000001}
+    - {x: .269999981, y: -.159999996, z: -.100000001}
+    - {x: .269999981, y: -.159999996, z: .100000001}
+    - {x: .215000004, y: .099999994, z: -.100000001}
+    - {x: .215000004, y: .099999994, z: .100000001}
+    colliderIndicesFwd: 020000000300000000000000000000000300000001000000040000000500000002000000020000000500000003000000060000000500000004000000060000000700000005000000080000000700000006000000080000000900000007000000000000000100000008000000080000000100000009000000020000000800000006000000060000000400000002000000020000000000000008000000070000000900000003000000030000000500000007000000090000000100000003000000
+    colliderIndicesBack: 000000000300000002000000010000000300000000000000020000000500000004000000030000000500000002000000040000000500000006000000050000000700000006000000060000000700000008000000070000000900000008000000080000000100000000000000090000000100000008000000060000000800000002000000020000000400000006000000080000000000000002000000030000000900000007000000070000000500000003000000030000000100000009000000
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D:
+    - points:
+      - {x: .0649999976, y: .145000011}
+      - {x: -.269999981, y: .0799999982}
+      - {x: -.234999985, y: -.159999996}
+      - {x: .269999981, y: -.159999996}
+      - {x: .215000004, y: .099999994}
+    edgeCollider2D: []
+    attachPoints: []
+  - name: snailShell_upsidedown
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .439999998, y: .299999982, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .439999998, y: .299999982, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.219999999, y: -.149999991, z: 0}
+    - {x: .219999999, y: -.149999991, z: 0}
+    - {x: -.219999999, y: .149999991, z: 0}
+    - {x: .219999999, y: .149999991, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .265632808, y: .289070308}
+    - {x: .265632808, y: .632804692}
+    - {x: .499992192, y: .289070308}
+    - {x: .499992192, y: .632804692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: 517b202f9e8b74cb5bf9e393760e7925
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 2
+    customColliders: []
+    colliderVertices:
+    - {x: -7.4505806e-09, y: .0400000028, z: 0}
+    - {x: .209999979, y: .099999994, z: .100000001}
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: snailWalk2
+    boundsData:
+    - {x: .00499999523, y: -.00499999523, z: 0}
+    - {x: .569999993, y: .310000002, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: -.00499999523, z: 0}
+    - {x: .569999993, y: .310000002, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.280000001, y: -.159999996, z: 0}
+    - {x: .289999992, y: -.159999996, z: 0}
+    - {x: -.280000001, y: .150000006, z: 0}
+    - {x: .289999992, y: .150000006, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .0156328119, y: .0156328119}
+    - {x: .460929692, y: .0156328119}
+    - {x: .0156328119, y: .257804692}
+    - {x: .460929692, y: .257804692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: a6e5322bc11c443c3925b746e44fe6e9
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 3
+    customColliders: []
+    colliderVertices:
+    - {x: .0849999785, y: .150000006, z: -.100000001}
+    - {x: .0849999785, y: .150000006, z: .100000001}
+    - {x: -.280000001, y: .0649999976, z: -.100000001}
+    - {x: -.280000001, y: .0649999976, z: .100000001}
+    - {x: -.25, y: -.149999991, z: -.100000001}
+    - {x: -.25, y: -.149999991, z: .100000001}
+    - {x: .289999992, y: -.159999996, z: -.100000001}
+    - {x: .289999992, y: -.159999996, z: .100000001}
+    - {x: .224999994, y: .104999989, z: -.100000001}
+    - {x: .224999994, y: .104999989, z: .100000001}
+    colliderIndicesFwd: 020000000300000000000000000000000300000001000000040000000500000002000000020000000500000003000000060000000500000004000000060000000700000005000000080000000700000006000000080000000900000007000000000000000100000008000000080000000100000009000000020000000800000006000000060000000400000002000000020000000000000008000000070000000900000003000000030000000500000007000000090000000100000003000000
+    colliderIndicesBack: 000000000300000002000000010000000300000000000000020000000500000004000000030000000500000002000000040000000500000006000000050000000700000006000000060000000700000008000000070000000900000008000000080000000100000000000000090000000100000008000000060000000800000002000000020000000400000006000000080000000000000002000000030000000900000007000000070000000500000003000000030000000100000009000000
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D:
+    - points:
+      - {x: .0849999785, y: .150000006}
+      - {x: -.280000001, y: .0649999976}
+      - {x: -.25, y: -.149999991}
+      - {x: .289999992, y: -.159999996}
+      - {x: .224999994, y: .104999989}
+    edgeCollider2D: []
+    attachPoints: []
+  - name: slimeWalk1
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .5, y: .280000001, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .5, y: .280000001, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.25, y: -.140000001, z: 0}
+    - {x: .25, y: -.140000001, z: 0}
+    - {x: -.25, y: .140000001, z: 0}
+    - {x: .25, y: .140000001, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .0156328119, y: .289070308}
+    - {x: .0156328119, y: .679679692}
+    - {x: .234367192, y: .289070308}
+    - {x: .234367192, y: .679679692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: ce749c3bc39884ff199b1edfd0f8f4b8
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 2
+    customColliders: []
+    colliderVertices:
+    - {x: -.0399999991, y: -.0100000054, z: 0}
+    - {x: .199999988, y: .129999995, z: .100000001}
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: slimeDead
+    boundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: .589999974, y: .119999997, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: .589999974, y: .119999997, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.289999992, y: -.0599999987, z: 0}
+    - {x: .299999982, y: -.0599999987, z: 0}
+    - {x: -.289999992, y: .0599999987, z: 0}
+    - {x: .299999982, y: .0599999987, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .820320308, y: .289070308}
+    - {x: .820320308, y: .749992192}
+    - {x: .914054692, y: .289070308}
+    - {x: .914054692, y: .749992192}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: f84346f23fcf444c387c310319bdfa38
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 3
+    customColliders: []
+    colliderVertices:
+    - {x: .125, y: .0599999987, z: -.100000001}
+    - {x: .125, y: .0599999987, z: .100000001}
+    - {x: -.13499999, y: .0599999987, z: -.100000001}
+    - {x: -.13499999, y: .0599999987, z: .100000001}
+    - {x: -.289999992, y: -.0599999987, z: -.100000001}
+    - {x: -.289999992, y: -.0599999987, z: .100000001}
+    - {x: .299999982, y: -.0599999987, z: -.100000001}
+    - {x: .299999982, y: -.0599999987, z: .100000001}
+    - {x: .215000004, y: -.0150000006, z: -.100000001}
+    - {x: .215000004, y: -.0150000006, z: .100000001}
+    colliderIndicesFwd: 020000000300000000000000000000000300000001000000040000000500000002000000020000000500000003000000060000000500000004000000060000000700000005000000080000000900000006000000060000000900000007000000000000000100000008000000080000000100000009000000020000000800000006000000060000000400000002000000020000000000000008000000070000000900000003000000030000000500000007000000090000000100000003000000
+    colliderIndicesBack: 000000000300000002000000010000000300000000000000020000000500000004000000030000000500000002000000040000000500000006000000050000000700000006000000060000000900000008000000070000000900000006000000080000000100000000000000090000000100000008000000060000000800000002000000020000000400000006000000080000000000000002000000030000000900000007000000070000000500000003000000030000000100000009000000
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D:
+    - points:
+      - {x: .125, y: .0599999987}
+      - {x: -.13499999, y: .0599999987}
+      - {x: -.289999992, y: -.0599999987}
+      - {x: .299999982, y: -.0599999987}
+      - {x: .215000004, y: -.0150000006}
+    edgeCollider2D: []
+    attachPoints: []
+  - name: snailShell
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .439999998, y: .299999982, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .439999998, y: .299999982, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.219999999, y: -.149999991, z: 0}
+    - {x: .219999999, y: -.149999991, z: 0}
+    - {x: -.219999999, y: .149999991, z: 0}
+    - {x: .219999999, y: .149999991, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .445320308, y: .664070308}
+    - {x: .789054692, y: .664070308}
+    - {x: .445320308, y: .898429692}
+    - {x: .789054692, y: .898429692}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+    materialId: 0
+    sourceTextureGUID: fdf6b37cc802e45138879a25055514a7
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 1
+    colliderType: 2
+    customColliders: []
+    colliderVertices:
+    - {x: .00499998778, y: -.0249999948, z: 0}
+    - {x: .204999983, y: .0849999934, z: .100000001}
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 40834b3eb71774005b46b8711063aa92, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 11a1f0921ffb54615b76b6dc7b7731f5, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: f4953fb2819e840a3a6cf6289b9c243f
+  spriteCollectionName: EnemyCollection
+  assetName: 
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 50
+  buildKey: 1488951843
+  dataGuid: 14e0daa15aa854067a48807e92a3d42f
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 111144}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

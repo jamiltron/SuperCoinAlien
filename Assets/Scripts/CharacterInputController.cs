@@ -43,7 +43,7 @@ public class CharacterInputController : MonoBehaviour {
     } else if (Input.GetButton("Left")) {
       normalizedHorizontalSpeed = -1;
       if (transform.localScale.x > 0f) {
-        transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
       }
     } else {
       normalizedHorizontalSpeed = 0;
