@@ -19,7 +19,7 @@ Todo
 Misc
 -----
 Note that this repo does not include Toolkit 2d, but assumes that you do have
-it. Pick up a copy of this at (Unikron Software)[http://www.unikronsoftware.com/2dtoolkit/].
+it. Pick up a copy of this at [Unikron Software](http://www.unikronsoftware.com/2dtoolkit/).
 
 The assets for this game come from the [Kenny Donation Pack](http://kenney.itch.io/kenney-donation). All of these assets are licensed under the [CC0 License](https://creativecommons.org/publicdomain/zero/1.0/), but you should still [donate to get a copy](http://kenney.itch.io/kenney-donation).
 
