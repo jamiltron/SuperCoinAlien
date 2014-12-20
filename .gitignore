@@ -39,3 +39,9 @@ Assets/TK2DROOT/
 Assets/TK2dROOT.meta
 Assets/-tk2d.asset
 Assets/-tk2d.asset.meta
+
+# ==================================================== #
+# stuff I'm not sure about license so not including it #
+# ==================================================== #
+Assets/Plugins*
+Assets/Photon*
