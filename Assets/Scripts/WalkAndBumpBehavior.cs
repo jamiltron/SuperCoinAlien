@@ -9,14 +9,12 @@ public class WalkAndBumpBehavior : MonoBehaviour {
   public bool facingRight = false;
 
   private CharacterController2D controller;
-  private BoxCollider2D col;
   private float normalizedHorizontalSpeed = 0f;
   private Vector3 velocity;
 
 
   void Awake() {
     controller = GetComponent<CharacterController2D>();
-    col = GetComponent<BoxCollider2D>();
     controller.onControllerCollidedEvent += HandleOnControllerCollidedEvent;
   }
 
@@ -37,10 +35,7 @@ public class WalkAndBumpBehavior : MonoBehaviour {
     }
 
     velocity.x = Mathf.Lerp(velocity.x, normalizedHorizontalSpeed * walkSpeed, Time.deltaTime * groundDamping);
-    
-    // apply gravity before moving
     velocity.y += gravity * Time.deltaTime;
-
     controller.move(velocity * Time.deltaTime);
   }
 
@@ -49,21 +44,6 @@ public class WalkAndBumpBehavior : MonoBehaviour {
       TurnAround();
 
     }
-
-   /* Debug.Log(hit.normal.x + " , " + hit.normal.y);
-    Debug.Log("Collided!");
-    if (facingRight) {
-      if (hit.
-      if (Mathf.Approximately(hit.normal.y, 0f)) {
-        Debug.Log("Turning around!");
-        TurnAround();
-      }
-    } else {
-      if (Mathf.Approximately(hit.normal.y, 0f)) {
-        Debug.Log("turning around!");
-        TurnAround();
-      }
-    }*/
   }
 
   private void TurnAround() {
