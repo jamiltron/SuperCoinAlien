@@ -4,7 +4,7 @@ using System.Collections;
 
 public class NetworkLobby : MonoBehaviour {
 
-  public ScrollRect scrollRect;
+  public ScrollableList roomList;
 
   private enum NetworkState {
     Starting,
@@ -27,18 +27,18 @@ public class NetworkLobby : MonoBehaviour {
 
   void OnJoinedLobby() {
     networkState = NetworkState.JoinedLobby;
+    
     Debug.Log("Lobby joined!");
   }
 
   void DisplayLobby() {
     if (networkState == NetworkState.JoinedLobby) {
-      roomInfo = PhotonNetwork.GetRoomList();
-
-      string roomString = "";
-      foreach (var room in roomInfo) {
-        roomString += room.name + "\n";
-      }
+      roomList.DisplayRooms(PhotonNetwork.GetRoomList());
     }
+  }
+
+  public void RefreshRooms() {
+    DisplayLobby();
   }
 
 }
