@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 
 [RequireComponent( typeof(BoxCollider2D))]
-public class CharacterController2D : MonoBehaviour {
+public class CharacterController2D : Photon.MonoBehaviour {
   #region internal types
   
   private struct CharacterRaycastOrigins {
@@ -14,6 +14,20 @@ public class CharacterController2D : MonoBehaviour {
     public Vector3 bottomRight;
     public Vector3 bottomLeft;
   }
+
+  private struct NetworkState {
+    public Vector3 position;
+    public double timestamp;
+
+    public NetworkState(Vector3 position, double timestamp) {
+      this.position = position;
+      this.timestamp = timestamp;
+    }
+  }
+
+  private NetworkState[] networkBuffer;
+  private int stateCount = 0;
+  public float interpolationBackTime = 0.1f;
   
   public class CharacterCollisionState2D {
     public bool right;
@@ -65,6 +79,8 @@ public class CharacterController2D : MonoBehaviour {
       recalculateDistanceBetweenRays();
     }
   }
+
+  public float interpolationSmoothing = 10f;
   
   
   /// <summary>
@@ -134,6 +150,14 @@ public class CharacterController2D : MonoBehaviour {
   
   private const float kSkinWidthFloatFudgeFactor = 0.001f;
   
+  private float syncTime = 0f;
+  private float syncDelay = 0f;
+  private double lastSynchronizationTime = 0f;
+  private Vector3 syncStartPosition = Vector3.zero;
+  private Vector3 syncEndPosition = Vector3.zero;
+  private Vector3 syncVelocity = Vector3.zero;
+  private Vector3 lastPos;
+  private tk2dSpriteAnimator animator;
   #endregion
   
   
@@ -164,6 +188,7 @@ public class CharacterController2D : MonoBehaviour {
   #region Monobehaviour
   
   void Awake() {
+    animator = GetComponent<tk2dSpriteAnimator>();
     // add our one-way platforms to our normal platform mask so that we can land on them from above
     platformMask |= oneWayPlatformMask;
     
@@ -200,6 +225,23 @@ public class CharacterController2D : MonoBehaviour {
       onTriggerExitEvent(col);
     }
   }
+
+  void Update() {
+    if (!photonView.isMine) {
+      SyncMovement();
+    }
+  }
+
+  void Start() {
+    PhotonNetwork.sendRate = 40;
+    PhotonNetwork.sendRateOnSerialize = 20;
+    Debug.Log("send rate: " + PhotonNetwork.sendRate);
+    Debug.Log("send on serialize: " + PhotonNetwork.sendRateOnSerialize);
+    networkBuffer = new NetworkState[20];
+
+    syncStartPosition = transform.position;
+    syncEndPosition = transform.position;
+  }
   
   #endregion
   
@@ -208,9 +250,65 @@ public class CharacterController2D : MonoBehaviour {
   private void DrawRay(Vector3 start, Vector3 dir, Color color) {
     Debug.DrawRay(start, dir, color);
   }
+
+  void BufferState(NetworkState state) {
+    // shift buffer contents to accomodate new state
+    for( int i = networkBuffer.Length - 1; i > 0; i-- )
+    {
+      networkBuffer[ i ] = networkBuffer[ i - 1 ];
+    }
+    
+    // save state to slot 0
+    networkBuffer[ 0 ] = state;
+    
+    // increment state count (up to buffer size)
+    stateCount = Mathf.Min( stateCount + 1, networkBuffer.Length );
+  }
+
   
-  
-  #region Public
+  void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    if (stream.isWriting)
+    {
+      stream.SendNext(transform.position);
+      stream.SendNext(transform.localScale);
+      stream.SendNext(velocity);
+      stream.SendNext(animator.CurrentClip.name);
+    }
+    else
+    {
+      syncEndPosition = (Vector3)stream.ReceiveNext();
+      transform.localScale = (Vector3)stream.ReceiveNext();
+      syncVelocity = (Vector3)stream.ReceiveNext();
+      animator.Play((string)stream.ReceiveNext());
+
+      syncStartPosition = transform.position;
+      lastSynchronizationTime = PhotonNetwork.time;
+      syncTime = 0f;
+    }
+    
+  }
+
+  void SyncMovement() {
+    syncTime += Time.deltaTime;
+    float ping = 0;//(float) PhotonNetwork.GetPing();
+    float timeSinceLastUpdate = (float) (PhotonNetwork.time - lastSynchronizationTime);
+    float totalTimePassed = ping + timeSinceLastUpdate;
+
+    float speed = syncVelocity.magnitude >= 1 ? syncVelocity.magnitude : 1000f;
+    Vector3 extrapolatedPosition = syncEndPosition + syncVelocity * totalTimePassed;
+    Vector3 newPosition = Vector3.zero;
+    newPosition = Vector3.MoveTowards(transform.position, extrapolatedPosition, speed * Time.deltaTime);
+    
+    
+    if (Vector3.Distance(transform.position, extrapolatedPosition) > 2f) {
+      newPosition = extrapolatedPosition;
+    }
+
+
+   
+
+    transform.position = newPosition;
+  }
   
   /// <summary>
   /// attempts to move the character to position + deltaMovement. Any colliders in the way will cause the movement to
@@ -298,8 +396,6 @@ public class CharacterController2D : MonoBehaviour {
     var colliderUseableWidth = boxCollider.size.x * Mathf.Abs(transform.localScale.x) - (2f * _skinWidth);
     _horizontalDistanceBetweenRays = colliderUseableWidth / (totalVerticalRays - 1);
   }
-  
-  #endregion
   
   
   #region Private Movement Methods

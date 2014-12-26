@@ -4,24 +4,17 @@ using System.Collections.Generic;
 
 public class SpawnCoin : MonoBehaviour {
 
-  public CoinGrabber coinGrabber;
   public GameObject coinPrefab;
   public GameObject[] spawnPoints;
   
 
   private GameObject coin;
 
-  void Awake() {
-    if (coinGrabber != null) {
-      coinGrabber.OnCoinGrabbedEvent += GenerateCoin;
-    }
-  }
-
   void Start() {
-    GenerateCoin((GameObject)Instantiate(coinPrefab, Vector3.zero, Quaternion.identity));
+    coin = Instantiate(coinPrefab, Vector3.zero, Quaternion.identity) as GameObject;
   }
 
-  public void GenerateCoin(GameObject coin) {
+  public void GenerateCoin() {
     Vector3 lastPosition = coin.transform.position;
     int i = Random.Range(0, spawnPoints.Length);
     Vector3 newPosition = spawnPoints[i].transform.position;

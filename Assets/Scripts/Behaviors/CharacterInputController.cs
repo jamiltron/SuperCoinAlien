@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(CharacterController2D))]
-public class CharacterInputController : MonoBehaviour {
+public class CharacterInputController : Photon.MonoBehaviour {
   public float gravity = -25f;
   public float runSpeed = 8f;
   public float groundDamping = 20f; // how fast do we change direction? higher means faster
@@ -11,7 +11,7 @@ public class CharacterInputController : MonoBehaviour {
   
   [HideInInspector]
   private float normalizedHorizontalSpeed = 0;
-  
+
   private CharacterController2D _controller;
   private CharacterAnimationController _animator;
   private RaycastHit2D _lastControllerColliderHit;
@@ -21,9 +21,13 @@ public class CharacterInputController : MonoBehaviour {
     _animator = GetComponent<CharacterAnimationController>();
     _controller = GetComponent<CharacterController2D>();
   }
-  
+
   // the Update loop contains a very simple example of moving the character around and controlling the animation
   void Update() {
+    if (!PhotonNetwork.offlineMode && !photonView.isMine) {
+      return;
+    }
+
     if (Input.GetButton("Quit")) {
       Application.Quit();
     }
