@@ -25,7 +25,7 @@ public class CharacterSoundController : MonoBehaviour {
       groundHitSound.Play();
     }
 
-    if (!controller.isGrounded && controller.collisionState.above) {
+    if (!controller.isGrounded && controller.collisionState.above && !headHitSound.isPlaying) {
       headHitSound.Play();
     }
 	}
