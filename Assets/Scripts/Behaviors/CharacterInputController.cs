@@ -55,8 +55,7 @@ public class CharacterInputController : Photon.MonoBehaviour {
     
     
     // we can only jump whilst grounded
-    if( _controller.isGrounded && Input.GetButtonDown("Jump"))
-    {
+    if( _controller.isGrounded && Input.GetButtonDown("Jump")) {
       _velocity.y = Mathf.Sqrt(2f * jumpHeight * -gravity);
     }
     

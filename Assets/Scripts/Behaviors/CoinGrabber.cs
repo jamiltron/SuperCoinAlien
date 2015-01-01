@@ -6,6 +6,7 @@ using System.Collections;
 public class CoinGrabber : MonoBehaviour {
 
   public int coinsGrabbed = 0;
+  public AudioSource coinSound;
 
   private CharacterController2D controller;
   private SpawnCoin coinSpawner;
@@ -19,11 +20,10 @@ public class CoinGrabber : MonoBehaviour {
   void OnTriggerEnterEvent(Collider2D col) {
     Debug.Log("Trigger!");
     if (col.gameObject.tag == "Coin") {
-      
+      coinSound.Play();
       if (coinSpawner == null) {
-        Debug.LogError("Spawner is nulL!");
+        Debug.LogError("Spawner is null!");
       } else {
-        Debug.Log("Generateing coin!");
         coinSpawner.GenerateCoin();
       }
       coinsGrabbed += 1;
