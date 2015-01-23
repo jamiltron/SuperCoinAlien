@@ -142,9 +142,15 @@ MonoBehaviour:
     regionId: 0
     colliderType: 3
     colliderData: []
-    boxColliderMin: {x: 30, y: 28}
-    boxColliderMax: {x: 41, y: 40}
-    polyColliderIslands: []
+    boxColliderMin: {x: 32, y: 30}
+    boxColliderMax: {x: 40, y: 38}
+    polyColliderIslands:
+    - connected: 1
+      points:
+      - {x: 0, y: 0}
+      - {x: 0, y: 70}
+      - {x: 70, y: 70}
+      - {x: 70, y: 0}
     polyColliderCap: 1
     colliderConvex: 0
     colliderSmoothSphereCollisions: 0
@@ -276,7 +282,7 @@ MonoBehaviour:
   normalGenerationMode: 0
   padAmount: -1
   autoUpdate: 1
-  editorDisplayScale: 3.28913879
+  editorDisplayScale: 4.84323454
   version: 4
   assetName: 
   linkedSpriteCollections: []

@@ -235,8 +235,6 @@ public class CharacterController2D : Photon.MonoBehaviour {
   void Start() {
     PhotonNetwork.sendRate = 40;
     PhotonNetwork.sendRateOnSerialize = 20;
-    Debug.Log("send rate: " + PhotonNetwork.sendRate);
-    Debug.Log("send on serialize: " + PhotonNetwork.sendRateOnSerialize);
     networkBuffer = new NetworkState[20];
 
     syncStartPosition = transform.position;

@@ -12,8 +12,7 @@ GameObject:
   - 23: {fileID: 2329472}
   - 114: {fileID: 11429474}
   - 114: {fileID: 11429472}
-  - 58: {fileID: 5886074}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,17 +58,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 129472}
   m_Mesh: {fileID: 0}
---- !u!58 &5886074
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129472}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .5
-  m_Center: {x: 0, y: 0}
 --- !u!114 &11429472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,7 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5ab3aae6638492d83b8cd6639c9418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 8.5
+  bulletSpeed: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 4294962120
 --- !u!114 &11429474
 MonoBehaviour:
   m_ObjectHideFlags: 1

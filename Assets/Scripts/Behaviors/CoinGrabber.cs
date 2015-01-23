@@ -18,7 +18,6 @@ public class CoinGrabber : MonoBehaviour {
   }
 
   void OnTriggerEnterEvent(Collider2D col) {
-    Debug.Log("Trigger!");
     if (col.gameObject.tag == "Coin") {
       coinSound.Play();
       if (coinSpawner == null) {

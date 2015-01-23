@@ -14,7 +14,7 @@ public class GunInputController : MonoBehaviour {
       currentCooldown = cooldown;
       GameObject newObject = (GameObject) Instantiate(bullet, gunTransform.position, Quaternion.identity);
       Bullet bulletComponent = newObject.GetComponent<Bullet>();
-      bulletComponent.Shoot(parentTransform.localScale.x);
+      bulletComponent.Shoot(parentTransform.localScale.x, parentTransform.gameObject, gunTransform.gameObject);
     }
 
     currentCooldown -= Time.deltaTime;
