@@ -66,7 +66,7 @@ public class CharacterController2D : Photon.MonoBehaviour {
   }
 
   public float interpolationSmoothing = 1000f;
-  public float teleportationFactor = 2f;
+  public float teleportThreshold = 2f;
   
   /// <summary>
   /// mask with all layers that the player should interact with
@@ -250,7 +250,7 @@ public class CharacterController2D : Photon.MonoBehaviour {
     Vector3 extrapolatedPosition = syncEndPosition + syncVelocity * totalTimePassed;
     Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedPosition, speed * Time.deltaTime);
     
-    if (Vector3.Distance(transform.position, extrapolatedPosition) > teleportationFactor) {
+    if (Vector3.Distance(transform.position, extrapolatedPosition) > teleportThreshold) {
       newPosition = extrapolatedPosition;
     }
 
