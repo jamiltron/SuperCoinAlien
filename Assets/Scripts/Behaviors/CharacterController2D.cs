@@ -1,5 +1,4 @@
-﻿// see https://github.com/prime31/CharacterController2D for more info,
-// including license
+﻿// see https://github.com/prime31/CharacterController2D for more info, including license
 #define DEBUG_CC2D_RAYS
 using UnityEngine;
 using System;
@@ -15,20 +14,6 @@ public class CharacterController2D : Photon.MonoBehaviour {
     public Vector3 bottomLeft;
   }
 
-  private struct NetworkState {
-    public Vector3 position;
-    public double timestamp;
-
-    public NetworkState(Vector3 position, double timestamp) {
-      this.position = position;
-      this.timestamp = timestamp;
-    }
-  }
-
-  private NetworkState[] networkBuffer;
-  private int stateCount = 0;
-  public float interpolationBackTime = 0.1f;
-  
   public class CharacterCollisionState2D {
     public bool right;
     public bool left;
@@ -80,8 +65,8 @@ public class CharacterController2D : Photon.MonoBehaviour {
     }
   }
 
-  public float interpolationSmoothing = 10f;
-  
+  public float interpolationSmoothing = 1000f;
+  public float teleportationFactor = 2f;
   
   /// <summary>
   /// mask with all layers that the player should interact with
@@ -149,14 +134,10 @@ public class CharacterController2D : Photon.MonoBehaviour {
   public bool isGrounded { get { return collisionState.below; } }
   
   private const float kSkinWidthFloatFudgeFactor = 0.001f;
-  
-  private float syncTime = 0f;
-  private float syncDelay = 0f;
+
   private double lastSynchronizationTime = 0f;
-  private Vector3 syncStartPosition = Vector3.zero;
   private Vector3 syncEndPosition = Vector3.zero;
   private Vector3 syncVelocity = Vector3.zero;
-  private Vector3 lastPos;
   private tk2dSpriteAnimator animator;
   #endregion
   
@@ -235,75 +216,43 @@ public class CharacterController2D : Photon.MonoBehaviour {
   void Start() {
     PhotonNetwork.sendRate = 40;
     PhotonNetwork.sendRateOnSerialize = 20;
-    networkBuffer = new NetworkState[20];
-
-    syncStartPosition = transform.position;
     syncEndPosition = transform.position;
   }
   
   #endregion
-  
-  
+    
   [System.Diagnostics.Conditional( "DEBUG_CC2D_RAYS" )]
   private void DrawRay(Vector3 start, Vector3 dir, Color color) {
     Debug.DrawRay(start, dir, color);
   }
-
-  void BufferState(NetworkState state) {
-    // shift buffer contents to accomodate new state
-    for( int i = networkBuffer.Length - 1; i > 0; i-- )
-    {
-      networkBuffer[ i ] = networkBuffer[ i - 1 ];
-    }
-    
-    // save state to slot 0
-    networkBuffer[ 0 ] = state;
-    
-    // increment state count (up to buffer size)
-    stateCount = Mathf.Min( stateCount + 1, networkBuffer.Length );
-  }
-
   
   void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-    if (stream.isWriting)
-    {
+    if (stream.isWriting) {
       stream.SendNext(transform.position);
       stream.SendNext(transform.localScale);
       stream.SendNext(velocity);
       stream.SendNext(animator.CurrentClip.name);
-    }
-    else
-    {
+    } else {
       syncEndPosition = (Vector3)stream.ReceiveNext();
       transform.localScale = (Vector3)stream.ReceiveNext();
       syncVelocity = (Vector3)stream.ReceiveNext();
       animator.Play((string)stream.ReceiveNext());
 
-      syncStartPosition = transform.position;
       lastSynchronizationTime = PhotonNetwork.time;
-      syncTime = 0f;
     }
     
   }
 
   void SyncMovement() {
-    syncTime += Time.deltaTime;
-    float ping = 0;//(float) PhotonNetwork.GetPing();
-    float timeSinceLastUpdate = (float) (PhotonNetwork.time - lastSynchronizationTime);
-    float totalTimePassed = ping + timeSinceLastUpdate;
-
-    float speed = syncVelocity.magnitude >= 1 ? syncVelocity.magnitude : 1000f;
+    float totalTimePassed = (float) (PhotonNetwork.time - lastSynchronizationTime);
+  
+    float speed = syncVelocity.magnitude >= 1 ? syncVelocity.magnitude : interpolationSmoothing;
     Vector3 extrapolatedPosition = syncEndPosition + syncVelocity * totalTimePassed;
-    Vector3 newPosition = Vector3.zero;
-    newPosition = Vector3.MoveTowards(transform.position, extrapolatedPosition, speed * Time.deltaTime);
+    Vector3 newPosition = Vector3.MoveTowards(transform.position, extrapolatedPosition, speed * Time.deltaTime);
     
-    
-    if (Vector3.Distance(transform.position, extrapolatedPosition) > 2f) {
+    if (Vector3.Distance(transform.position, extrapolatedPosition) > teleportationFactor) {
       newPosition = extrapolatedPosition;
     }
-
-
-   
 
     transform.position = newPosition;
   }
@@ -486,15 +435,11 @@ public class CharacterController2D : Photon.MonoBehaviour {
     
     // if we can walk on slopes and our angle is small enough we need to move up
     if (angle < slopeLimit) {
-      // we only need to adjust the deltaMovement if we are not jumping
-      // TODO: this uses a magic number which isn't ideal!
       if (deltaMovement.y < jumpingThreshold) {
         // apply the slopeModifier to slow our movement up the slope
         var slopeModifier = slopeSpeedMultiplier.Evaluate(angle);
         deltaMovement.x *= slopeModifier;
-        
-        // we dont set collisions on the sides for this since a slope is not technically a side collision
-        
+                
         // smooth y movement when we climb. we make the y movement equivalent to the actual y location that corresponds
         // to our new x location using our good friend Pythagoras
         deltaMovement.y = Mathf.Abs(Mathf.Tan(angle * Mathf.Deg2Rad) * deltaMovement.x);
