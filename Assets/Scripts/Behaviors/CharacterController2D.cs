@@ -1,4 +1,7 @@
-﻿// see https://github.com/prime31/CharacterController2D for more info, including license
+﻿// This is a hacked-up version of prime31's CharacterController2D see
+// https://github.com/prime31/CharacterController2D for more info, including license.
+// I have removed some of the collision detection that I was not using, and I have added in some
+// photon functionality as a learning experience. 
 #define DEBUG_CC2D_RAYS
 using UnityEngine;
 using System;
