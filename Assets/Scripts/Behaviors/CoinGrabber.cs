@@ -14,10 +14,14 @@ public class CoinGrabber : MonoBehaviour {
   void Awake() {
     controller = GetComponent<CharacterController2D>();
     controller.onTriggerEnterEvent += OnTriggerEnterEvent;
-    coinSpawner = GameObject.FindGameObjectWithTag("CoinSpawner").GetComponent<SpawnCoin>();
+    //coinSpawner = GameObject.FindGameObjectWithTag("CoinSpawner").GetComponent<SpawnCoin>();
   }
 
   void OnTriggerEnterEvent(Collider2D col) {
+    if (coinSpawner == null) {
+      coinSpawner = GameObject.FindGameObjectWithTag("CoinSpawner").GetComponent<SpawnCoin>();
+    }
+
     if (col.gameObject.tag == "Coin") {
       coinSound.Play();
       if (coinSpawner == null) {

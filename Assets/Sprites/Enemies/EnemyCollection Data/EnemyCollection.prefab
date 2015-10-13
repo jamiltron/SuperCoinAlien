@@ -45,17 +45,17 @@ MonoBehaviour:
   spriteDefinitions:
   - name: slimeWalk2
     boundsData:
-    - {x: .00499999523, y: 0, z: 0}
+    - {x: .00499999523, y: .129999995, z: 0}
     - {x: .50999999, y: .25999999, z: 0}
     untrimmedBoundsData:
-    - {x: .00499999523, y: 0, z: 0}
+    - {x: .00499999523, y: .129999995, z: 0}
     - {x: .50999999, y: .25999999, z: 0}
     texelSize: {x: .00999999978, y: .00999999978}
     positions:
-    - {x: -.25, y: -.129999995, z: 0}
-    - {x: .25999999, y: -.129999995, z: 0}
-    - {x: -.25, y: .129999995, z: 0}
-    - {x: .25999999, y: .129999995, z: 0}
+    - {x: -.25, y: 0, z: 0}
+    - {x: .25999999, y: 0, z: 0}
+    - {x: -.25, y: .25999999, z: 0}
+    - {x: .25999999, y: .25999999, z: 0}
     normals: []
     tangents: []
     uvs:
@@ -78,7 +78,7 @@ MonoBehaviour:
     colliderType: 2
     customColliders: []
     colliderVertices:
-    - {x: -.0350000039, y: -.00999999791, z: 0}
+    - {x: -.0350000039, y: .119999997, z: 0}
     - {x: .194999993, y: .119999997, z: .100000001}
     colliderIndicesFwd: 
     colliderIndicesBack: 
@@ -249,17 +249,17 @@ MonoBehaviour:
     attachPoints: []
   - name: slimeWalk1
     boundsData:
-    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: .140000001, z: 0}
     - {x: .5, y: .280000001, z: 0}
     untrimmedBoundsData:
-    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: .140000001, z: 0}
     - {x: .5, y: .280000001, z: 0}
     texelSize: {x: .00999999978, y: .00999999978}
     positions:
-    - {x: -.25, y: -.140000001, z: 0}
-    - {x: .25, y: -.140000001, z: 0}
-    - {x: -.25, y: .140000001, z: 0}
-    - {x: .25, y: .140000001, z: 0}
+    - {x: -.25, y: 0, z: 0}
+    - {x: .25, y: 0, z: 0}
+    - {x: -.25, y: .280000001, z: 0}
+    - {x: .25, y: .280000001, z: 0}
     normals: []
     tangents: []
     uvs:
@@ -282,7 +282,7 @@ MonoBehaviour:
     colliderType: 2
     customColliders: []
     colliderVertices:
-    - {x: -.0399999991, y: -.0100000054, z: 0}
+    - {x: -.0399999991, y: .129999995, z: 0}
     - {x: .199999988, y: .129999995, z: .100000001}
     colliderIndicesFwd: 
     colliderIndicesBack: 
@@ -410,7 +410,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: 2
   halfTargetHeight: 50
-  buildKey: 1488951843
+  buildKey: 2046666079
   dataGuid: 14e0daa15aa854067a48807e92a3d42f
   managedSpriteCollection: 0
   hasPlatformData: 0
@@ -427,4 +427,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111144}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

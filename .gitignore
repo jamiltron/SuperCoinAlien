@@ -45,3 +45,9 @@ Assets/-tk2d.asset.meta
 # ==================================================== #
 Assets/Plugins*
 Assets/Photon*
+
+# ====== #
+# Builds #
+# ====== #
+Builds/
+Build/

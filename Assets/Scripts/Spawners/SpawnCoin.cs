@@ -4,14 +4,13 @@ using System.Collections.Generic;
 
 public class SpawnCoin : MonoBehaviour {
 
-  public GameObject coinPrefab;
+  public string coinPrefab;
   public GameObject[] spawnPoints;
-  
 
   private GameObject coin;
 
   void Start() {
-    coin = Instantiate(coinPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+    coin = PhotonNetwork.InstantiateSceneObject(coinPrefab, Vector3.zero, Quaternion.identity, 0, new object[0]);
   }
 
   public void GenerateCoin() {
